@@ -5,4 +5,11 @@
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  font-family: "PT Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Bitter", serif;
 }
