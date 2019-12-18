@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./stylesheet/stylesheet.css" />
+    <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
     <link
       href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap"
       rel="stylesheet"
@@ -17,8 +17,37 @@
 
   <body>
     <header></header>
-    <nav></nav>
-    <main></main>
-    <script src="./javascript/javascript.js"></script>
+    <nav>
+      <div>
+        <div>
+          <a href="#">TGIF</a>
+        </div>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li>
+            <a href="#">Congress 113</a>
+            <ul>
+              <li><a href="./senate.html">Senate</a></li>
+              <li><a href="./house_representatives.html">House</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <table id="senate-data">
+        <thead>
+          <tr>
+            <td>Full Name</td>
+            <td>Party</td>
+            <td>State</td>
+            <td>Seniority</td>
+            <td>% of votes</td>
+          </tr>
+        </thead>
+      </table>
+    </main>
+    <script src="../javascript/javascript.js"></script>
+    <script src="../javascript/113_senate.js"></script>
   </body>
 </html>
