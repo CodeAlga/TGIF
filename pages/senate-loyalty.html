@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../stylesheet/stylesheet.css" /> -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bitter:700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
+
+    <title>Home of TGIF</title>
+  </head>
+
+  <!-- BODY BEGGINS HERE -->
+
+  <body>
+    <header class="page-header d-flex py-3">
+      <div class="container-fluid d-flex mx-0 justify-content-between">
+        <div class="container ml-1 pl-1 d-flex">
+          <img
+            id="logo"
+            src="../images/logoAlliance.png"
+            class="rounded col-2 float-left"
+            alt="Logo"
+          />
+
+          <h1 class="align-self-center text-left">
+            TGIF
+          </h1>
+        </div>
+        <a
+          href="mailto:info@tgif.net"
+          class="pull-right align-self-center d-flex mr-1 pr-1"
+          ><i class="fas fa-at fa-3x"></i
+          ><span class="align-self-center pl-1">info@tgif.net</span></a
+        >
+      </div>
+    </header>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info pl-5">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Congres 113</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Attendance</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./senate-attendance.html"
+                  >Senate</a
+                >
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="./house-attendance.html"
+                  >House of Representatives</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Party Loyalty</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="./house-loyalty.html"
+                  >House of Representatives</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Temp Full Info</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./pages/senate.html">Senate</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="./pages/house.html"
+                  >House of Representatives</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- PAGE CONTENT-->
+
+    <div class="container py-5">
+      <h2>Party Loyalty</h2>
+      <p class="text-justify">
+        <span class="ml-4">Those</span> who consider themselves to be strong
+        partisans, strong Democrats and strong Republicans respectively, tend to
+        be the most faithful in voting for their party's nominee for office and
+        legislation that backs their party's agenda.
+      </p>
+    </div>
+    <div class="container py-3">
+      <ul class="d-flex list-unstyled align-items-center">
+        <li class="pr-4">Filter by Party</li>
+        <li class="px-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox1"
+            value="option1"
+          />
+          <label class="form-check-label" for="inlineCheckbox1"
+            >Republican</label
+          >
+        </li>
+        <li class="px-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox2"
+            value="option2"
+          />
+          <label class="form-check-label" for="inlineCheckbox2">Democrat</label>
+        </li>
+        <li class="px-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox3"
+            value="option3"
+          />
+          <label class="form-check-label" for="inlineCheckbox3"
+            >Independent</label
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- --- TABLES --- -->
+
+    <div class="container table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <h3 class="float-right">
+          Senate at a glance
+        </h3>
+        <thead class="bg-info text-light">
+          <tr>
+            <th class="text-center">
+              Party
+            </th>
+            <th class="text-center">
+              Nº of Reps.
+            </th>
+            <th class="text-center">
+              % Voted w/ Party
+            </th>
+          </tr>
+        </thead>
+        <tbody id="houseTbody"></tbody>
+        <tr>
+          <td>Democats</td>
+        </tr>
+        <tr>
+          <td>Republicans</td>
+        </tr>
+        <tr>
+          <td>Independents</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="container table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <h3 class="float-right">
+          Least Loyal (Bottom 10% of Party)
+        </h3>
+        <thead class="bg-info text-light">
+          <tr>
+            <th class="text-center">
+              Name
+            </th>
+            <th class="text-center">
+              Nº Party Votes
+            </th>
+            <th class="text-center">
+              % Party Votes
+            </th>
+          </tr>
+        </thead>
+        <tbody id="houseTbody"></tbody>
+      </table>
+    </div>
+
+    <div class="container table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <h3 class="float-right">
+          Most Loyal (Top 10% of Party)
+        </h3>
+        <thead class="bg-info text-light">
+          <tr>
+            <th class="text-center">
+              Name
+            </th>
+            <th class="text-center">
+              Nº Party Votes
+            </th>
+            <th class="text-center">
+              % Party Votes
+            </th>
+          </tr>
+        </thead>
+        <tbody id="houseTbody"></tbody>
+      </table>
+    </div>
+
+    <!-- --- FOOTER --- -->
+
+    <footer class="footer bg-light">
+      <div class="container">
+        <p class="bg-light text-muted text-center no-gutters mb-0 py-3">
+          &#169; 2016 TGIF | All Rights Reserved
+        </p>
+      </div>
+    </footer>
+
+    <!-- --- SCRIPT LOADING--- -->
+
+    <script
+      src="https://kit.fontawesome.com/a8f0a724d4.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../javascript/113_house.js"></script>
+    <script src="../javascript/javascript.js"></script>
+  </body>
+</html>
