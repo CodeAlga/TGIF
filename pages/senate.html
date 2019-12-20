@@ -27,22 +27,25 @@
 
   <body onload="displaySenate(senateData.results[0].members);">
     <header class="page-header d-flex py-3">
-      <div class="container d-flex">
-        <img
-          id="logo"
-          src="../images/logoAlliance.png"
-          class="rounded col-2 float-left"
-          alt="Logo"
-        />
+      <div class="container-fluid d-flex mx-0 justify-content-between">
+        <div class="container ml-1 pl-1 d-flex">
+          <img
+            id="logo"
+            src="../images/logoAlliance.png"
+            class="rounded col-2 float-left"
+            alt="Logo"
+          />
 
-        <h1
-          class="float-left align-middle col-sm-4 col-md-6 col-lg-8 align-self-center text-left"
-        >
-          TGIF
-        </h1>
-        <a href="mailto:" class="align-self-center ml-auto"
+          <h1 class="align-self-center text-left">
+            TGIF
+          </h1>
+        </div>
+        <a
+          href="mailto:info@tgif.net"
+          class="pull-right align-self-center d-flex mr-1 pr-1"
           ><i class="fas fa-at fa-3x"></i
-        ></a>
+          ><span class="align-self-center pl-1">info@tgif.net</span></a
+        >
       </div>
     </header>
 
@@ -61,11 +64,11 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="../index.html"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">Congres 113</a>
           </li>
           <li class="nav-item dropdown active">
@@ -79,10 +82,14 @@
               >Dropdown</a
             >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">Senate</a></li>
+              <li>
+                <a class="dropdown-item" href="./senate.html">Senate</a>
+              </li>
               <li role="separator" class="divider"></li>
               <li>
-                <a class="dropdown-item" href="#">House of Representatives</a>
+                <a class="dropdown-item" href="./house.html"
+                  >House of Representatives</a
+                >
               </li>
             </ul>
           </li>
@@ -182,11 +189,16 @@
         <tbody id="senateTbody"></tbody>
       </table>
     </div>
-    <footer class="footer">
+    <footer class="footer bg-light">
       <div class="container">
-        <span class="text-muted">Footer content here.</span>
+        <p class="bg-light text-muted text-center no-gutters mb-0 py-3">
+          &#169; 2016 TGIF | All Rights Reserved
+        </p>
       </div>
     </footer>
+
+    <!-- --- SCRIPT LOADING--- -->
+
     <script
       src="https://kit.fontawesome.com/a8f0a724d4.js"
       crossorigin="anonymous"

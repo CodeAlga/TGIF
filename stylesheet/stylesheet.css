@@ -1,19 +1,54 @@
-* {
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+*,
+body {
   font-family: "PT Sans", sans-serif;
 }
 
-h1,
-h2,
-h3 {
+body h1,
+body h2,
+body h3,
+body h4 {
   font-family: "Bitter", serif;
 }
 
-table {
-  border: 1px solid black;
+nav {
+  font-size: 20px;
+  font-weight: bold;
 }
-td {
-  border: 1px solid black;
+
+header a {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+body a,
+.btn {
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s;
+}
+
+body a:hover,
+.btn:hover {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.card-header > i {
+  transition: 0.3s transform ease-in-out;
+}
+
+.card-header.collapsed > i {
+  transform: rotate(90deg);
+}
+
+.card-body.collapse {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-body.collapsing {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-body.collapse.show {
+  transition: all 0.3s ease-in-out;
 }
