@@ -1,4 +1,4 @@
-var data = {
+var senateData = {
   status: "OK",
   copyright: " Copyright (c) 2019 Pro Publica Inc. All Rights Reserved.",
   results: [
@@ -5161,28 +5161,6 @@ var data = {
   ]
 };
 
-function displaySenate(array) {
-  var name = {
-    first_name: "Placeholder",
-    second_name: "Placeholder",
-    last_name: "Placeholder"
-  };
-  var party = "Placeholder";
-  var state = "Placeholder";
-  var seniority = 0;
-  var partyVotes = 0;
-  var tempArray = [];
-
-  for (let i = 0, len = array.length; i < len; i++) {
-    tempArray.push(data.results[0].members[i].first_name);
-  }
-  console.log(tempArray.toString());
-}
-
-displaySenate(data.results[0].members);
-/* document.getElementById("senate-data").innerHTML = JSON.stringify(
-  data,
-  null,
-  2
+/* document.getElementById("senate-data").innerHTML = JSON.stringify(data, null, 2
 );
  */

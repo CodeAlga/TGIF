@@ -25,7 +25,7 @@
 
   <!-- BODY BEGGINS HERE -->
 
-  <body onload="displaySenate(senateData.results[0].members);">
+  <body onload="displayHouse(houseData.results[0].members);">
     <header class="page-header d-flex py-3">
       <div class="container d-flex">
         <img
@@ -104,18 +104,22 @@
     <!-- PAGE CONTENT-->
 
     <div class="container py-5">
-      <h2>Senators</h2>
+      <h2>Congressmen</h2>
       <p class="text-justify">
-        <span class="ml-4">First</span> convened in 1789, the composition and
-        powers of the Senate are established in Article One of the U.S.
-        Constitution. Each state is represented by two senators, regardless of
-        population, who serve staggered six-year terms. The Senate has several
-        exclusive powers not granted to the House, including consenting to
-        treaties as a precondition to their ratification and consenting to or
-        confirming appointments of Cabinet secretaries, federal judges, other
-        federal executive officials, military officers, regulatory officials,
-        ambassadors, and other federal uniformed officers, as well as trial of
-        federal officials impeached by the House.
+        <span class="ml-4">The</span> major power of the House is to pass
+        federal legislation that affects the entire country, although its bills
+        must also be passed by the Senate and further agreed to by the U.S.
+        President before becoming law (unless both the House and Senate re-pass
+        the legislation with a two-thirds majority in each chamber). The House
+        has some exclusive powers: the power to initiate revenue bills, to
+        impeach officials (impeached officials are subsequently tried in the
+        Senate), and to elect the U.S. President in case there is no majority in
+        the Electoral College.
+      </p>
+      <p class="text-justify">
+        Each U.S. state is represented in the House in proportion to its
+        population as measured in the census, but every state is entitled to at
+        least one representative.
       </p>
     </div>
     <div class="container py-3">
@@ -179,7 +183,7 @@
             </th>
           </tr>
         </thead>
-        <tbody id="senateTbody"></tbody>
+        <tbody id="houseTbody"></tbody>
       </table>
     </div>
     <footer class="footer">
@@ -206,10 +210,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="../javascript/113_senate.js"></script>
+    <script src="../javascript/113_house.js"></script>
     <script src="../javascript/javascript.js"></script>
-    <script>
-      displaySenate(senateData.results[0].members);
-    </script>
   </body>
 </html>
