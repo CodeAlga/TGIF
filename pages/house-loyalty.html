@@ -142,18 +142,58 @@
     </nav>
 
     <!-- PAGE CONTENT-->
+    <div class="container-fluid d-flex flex-md-row flex-sm-column mt-5">
+      <div class="container py-5 col-md-6 col-sm-12 align-self-center">
+        <h2>Party Loyalty</h2>
+        <p class="text-justify">
+          <span class="ml-4">Those</span> who consider themselves to be strong
+          partisans, strong Democrats and strong Republicans respectively, tend
+          to be the most faithful in voting for their party's nominee for office
+          and legislation that backs their party's agenda.
+        </p>
+      </div>
 
-    <div class="container py-5">
-      <h2>Party Loyalty</h2>
-      <p class="text-justify">
-        <span class="ml-4">Those</span> who consider themselves to be strong
-        partisans, strong Democrats and strong Republicans respectively, tend to
-        be the most faithful in voting for their party's nominee for office and
-        legislation that backs their party's agenda.
-      </p>
+      <!-- --- TABLES --- -->
+
+      <div
+        class="container table-responsive col-md-6 col-sm-12 align-self-center"
+      >
+        <table class="table table-striped table-bordered table-hover">
+          <h3 class="float-right">
+            House at a glance
+          </h3>
+          <thead class="bg-info text-light">
+            <tr>
+              <th class="text-center">
+                Party
+              </th>
+              <th class="text-center">
+                Nº of Reps.
+              </th>
+              <th class="text-center">
+                % Voted w/ Party
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tr id="houseGlanceDem">
+            <td>Democats</td>
+          </tr>
+          <tr id="houseGlanceRep">
+            <td>Republicans</td>
+          </tr>
+          <tr id="houseGlanceIndp">
+            <td>Independents</td>
+          </tr>
+          <tr id="houseGlanceTotal">
+            <td>Total</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="container py-3">
-      <ul class="d-flex list-unstyled align-items-center">
+
+    <div class="container py-3 bg-light rounded my-5 ">
+      <ul class="d-flex list-unstyled m-0 p-1 align-items-center">
         <li class="pr-4">Filter by Party</li>
         <li class="px-4">
           <input
@@ -188,85 +228,50 @@
         </li>
       </ul>
     </div>
+    <div class="container-fluid d-flex flex-md-row flex-sm-column">
+      <div class="container table-responsive col-md-6 col-sm-12">
+        <table class="table table-striped table-bordered table-hover">
+          <h3 class="float-right">
+            Least Loyal (Bottom 10% of Party)
+          </h3>
+          <thead class="bg-info text-light">
+            <tr>
+              <th class="text-center">
+                Name
+              </th>
+              <th class="text-center">
+                Nº Party Votes
+              </th>
+              <th class="text-center">
+                % Party Votes
+              </th>
+            </tr>
+          </thead>
+          <tbody id="bottom10"></tbody>
+        </table>
+      </div>
 
-    <!-- --- TABLES --- -->
-
-    <div class="container table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <h3 class="float-right">
-          House at a glance
-        </h3>
-        <thead class="bg-info text-light">
-          <tr>
-            <th class="text-center">
-              Party
-            </th>
-            <th class="text-center">
-              Nº of Reps.
-            </th>
-            <th class="text-center">
-              % Voted w/ Party
-            </th>
-          </tr>
-        </thead>
-        <tbody id="houseTbody"></tbody>
-        <tr>
-          <td>Democats</td>
-        </tr>
-        <tr>
-          <td>Republicans</td>
-        </tr>
-        <tr>
-          <td>Independents</td>
-        </tr>
-        <tr>
-          <td>Total</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="container table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <h3 class="float-right">
-          Least Loyal (Bottom 10% of Party)
-        </h3>
-        <thead class="bg-info text-light">
-          <tr>
-            <th class="text-center">
-              Name
-            </th>
-            <th class="text-center">
-              Nº Party Votes
-            </th>
-            <th class="text-center">
-              % Party Votes
-            </th>
-          </tr>
-        </thead>
-        <tbody id="houseTbody"></tbody>
-      </table>
-    </div>
-
-    <div class="container table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <h3 class="float-right">
-          Most Loyal (Top 10% of Party)
-        </h3>
-        <thead class="bg-info text-light">
-          <tr>
-            <th class="text-center">
-              Name
-            </th>
-            <th class="text-center">
-              Nº Party Votes
-            </th>
-            <th class="text-center">
-              % Party Votes
-            </th>
-          </tr>
-        </thead>
-        <tbody id="houseTbody"></tbody>
-      </table>
+      <div class="container table-responsive col-md-6 col-sm-12">
+        <table class="table table-striped table-bordered table-hover">
+          <h3 class="float-right">
+            Most Loyal (Top 10% of Party)
+          </h3>
+          <thead class="bg-info text-light">
+            <tr>
+              <th class="text-center">
+                Name
+              </th>
+              <th class="text-center">
+                Nº Party Votes
+              </th>
+              <th class="text-center">
+                % Party Votes
+              </th>
+            </tr>
+          </thead>
+          <tbody id="top10"></tbody>
+        </table>
+      </div>
     </div>
 
     <!-- --- FOOTER --- -->
@@ -301,6 +306,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="../javascript/113_house.js"></script>
-    <script src="../javascript/javascript.js"></script>
+    <script src="../javascript/house_loyalty.js"></script>
+    <script src="../javascript/main.js"></script>
   </body>
 </html>
