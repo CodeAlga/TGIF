@@ -25,7 +25,7 @@
 
   <!-- BODY BEGGINS HERE -->
 
-  <body onload="displayHouse(houseData.results[0].members);">
+  <body>
     <header class="page-header d-flex py-3">
       <div class="container-fluid d-flex mx-0 justify-content-between">
         <div class="container ml-1 pl-1 d-flex">
@@ -49,7 +49,7 @@
       </div>
     </header>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-info ">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-info pl-5">
       <button
         class="navbar-toggler"
         type="button"
@@ -68,8 +68,25 @@
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Congres 113</a>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Congress 113</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./senate.html">Senate</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="#">House of Representatives</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item dropdown active">
             <a
@@ -79,32 +96,45 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="true"
-              >Dropdown</a
+              >Attendance</a
             >
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li>
-                <a class="dropdown-item" href="./senate.html">Senate</a>
+                <a class="dropdown-item" href="./senate-attendance.html"
+                  >Senate</a
+                >
               </li>
               <li role="separator" class="divider"></li>
               <li>
-                <a class="dropdown-item" href="./house.html"
+                <a class="dropdown-item" href="./house-attendance.html"
+                  >House of Representatives</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Party Loyalty</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./pages/senate.html">Senate</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="./pages/house.html"
                   >House of Representatives</a
                 >
               </li>
             </ul>
           </li>
         </ul>
-        <!-- <form class="form-inline mt-2 mt-md-0">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form> -->
       </div>
     </nav>
 
@@ -133,34 +163,39 @@
       <ul class="d-flex list-unstyled align-items-center">
         <li class="pr-4">Filter by Party</li>
         <li class="px-4">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox1"
-            value="option1"
-          />
-          <label class="form-check-label" for="inlineCheckbox1"
-            >Republican</label
+          <label class="form-check-label" for="filterRep"
+            ><input
+              class="form-check-input"
+              type="checkbox"
+              id="filterRep"
+              value="Republicans"
+              checked
+            />
+            Republican</label
           >
         </li>
         <li class="px-4">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox2"
-            value="option2"
-          />
-          <label class="form-check-label" for="inlineCheckbox2">Democrat</label>
+          <label class="form-check-label" for="filterDem"
+            ><input
+              class="form-check-input"
+              type="checkbox"
+              id="filterDem"
+              value="Democrats"
+              checked
+            />
+            Democrat</label
+          >
         </li>
         <li class="px-4">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="inlineCheckbox3"
-            value="option3"
-          />
-          <label class="form-check-label" for="inlineCheckbox3"
-            >Independent</label
+          <label class="form-check-label text-muted" for="filterIndp">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="filterIndp"
+              value="Independents"
+              disabled
+            />
+            Independent</label
           >
         </li>
       </ul>
@@ -190,7 +225,7 @@
             </th>
           </tr>
         </thead>
-        <tbody id="houseTbody"></tbody>
+        <tbody id="listTbody"></tbody>
       </table>
     </div>
     <footer class="footer bg-light">
@@ -223,6 +258,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="../javascript/113_house.js"></script>
-    <script src="../javascript/javascript.js"></script>
+    <script src="../javascript/113_senate.js"></script>
+    <script src="../javascript/main.js"></script>
   </body>
 </html>

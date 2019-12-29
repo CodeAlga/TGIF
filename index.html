@@ -65,8 +65,27 @@
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Congres 113</a>
+          <li class="nav-item dropdown active">
+            <a
+              class="nav-link dropdown-toggle"
+              id="dropdown"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              >Congress 113</a
+            >
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li>
+                <a class="dropdown-item" href="./pages/senate.html">Senate</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a class="dropdown-item" href="./pages/house.html"
+                  >House of Representatives</a
+                >
+              </li>
+            </ul>
           </li>
           <li class="nav-item dropdown active">
             <a
@@ -92,7 +111,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown ">
+          <li class="nav-item dropdown active">
             <a
               class="nav-link dropdown-toggle"
               id="dropdown"
@@ -114,40 +133,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              id="dropdown"
-              href="#"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="true"
-              >Temp Full Info</a
-            >
-            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li>
-                <a class="dropdown-item" href="./pages/senate.html">Senate</a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li>
-                <a class="dropdown-item" href="./pages/house.html"
-                  >House of Representatives</a
-                >
-              </li>
-            </ul>
-          </li>
         </ul>
-        <!-- <form class="form-inline mt-2 mt-md-0">
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form> -->
       </div>
     </nav>
 

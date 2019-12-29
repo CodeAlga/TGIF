@@ -78,82 +78,6 @@ function createDataNos() {
   }
 
   votedParty(globalStoreA, globalStoreB);
-
-  /*   function noReps(array) {
-    var newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = listDemo.length;
-    rowDem.append(newData);
-
-    newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = listRep.length;
-    rowRep.append(newData);
-
-    newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = listIndp.length;
-    rowIndp.append(newData);
-
-    newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = listDemo.length + listRep.length + listIndp.length;
-    rowTotal.append(newData);
-  }
-  noReps(listDemo);
-
-    function votedPartyDemo(array) {
-    var total = 0;
-
-    array.forEach((element) => {
-      total = total + element.votes_with_party_pct;
-    });
-    var newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = (total / 105).toFixed(2) + "%";
-    rowDem.append(newData);
-  }
-  votedPartyDemo(listDemo);
-
-  function votedPartyRep(array) {
-    var total = 0;
-
-    array.forEach((element) => {
-      total = total + element.votes_with_party_pct;
-    });
-    var newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = (total / 105).toFixed(2) + "%";
-    rowRep.append(newData);
-  }
-  votedPartyRep(listRep);
-
-  function votedPartyIndp(array) {
-    var total = 0;
-
-    array.forEach((element) => {
-      total = total + element.votes_with_party_pct;
-    });
-    var newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = (total / 105).toFixed(2) + "%";
-    rowIndp.append(newData);
-  }
-  votedPartyIndp(listIndp);
-
-  function votedPartyTotal(array) {
-    var total = 0;
-
-    array.forEach((element) => {
-      total = total + element.votes_with_party_pct;
-    });
-    var newData = document.createElement("td");
-    newData.className = "text-center";
-    newData.innerHTML = (total / 105).toFixed(2) + "%";
-    rowTotal.append(newData);
-  }
-  votedPartyTotal(houseData.results[0].members);
-  */
 }
 
 function leastEngaged(array) {
@@ -167,60 +91,6 @@ function leastEngaged(array) {
     return 0;
   });
 
-  /* function createBottom(arr) {
-    let bottomTen = document.getElementById("bottom10");
-
-    let i = 10;
-    arr.forEach((element) => {
-      i--;
-      if (i >= 0) {
-        let newRow = document.createElement("tr");
-        bottomTen.append(newRow);
-        let newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.first_name + " " + element.last_name;
-        newRow.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes;
-        newRow.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes_pct + "%";
-        newRow.append(newData);
-      }
-    });
-  }
-
-  createBottom(array);
-
-  function createTop(arr) {
-    let topTen = document.getElementById("top10");
-
-    let i = 10;
-    arr.forEach((element) => {
-      i--;
-      if (i >= 0) {
-        let newRow2 = document.createElement("tr");
-        topTen.append(newRow2);
-        let newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.first_name + " " + element.last_name;
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes;
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes_pct + "%";
-        newRow2.append(newData);
-      }
-    });
-  }
-
-  createTop(array.reverse()); */
-
   function createBottomTop(arr) {
     const perc = Math.floor((array.length / 100) * 10);
     let i = perc,
@@ -229,12 +99,28 @@ function leastEngaged(array) {
     let topTen = document.getElementById("houseTop");
     arr.forEach((element) => {
       i--;
+
+      let name = "";
+      function createName(person) {
+        if (person.middle_name == null) {
+          name = person.first_name + " " + person.last_name;
+        } else {
+          name =
+            person.first_name +
+            " " +
+            person.middle_name +
+            " " +
+            person.last_name;
+        }
+      }
+
       if (i >= 0) {
         let newRow = document.createElement("tr");
         bottomTen.append(newRow);
         let newData = document.createElement("td");
         newData.className = "text-center";
-        newData.innerHTML = element.first_name + " " + element.last_name;
+        createName(element);
+        newData.innerHTML = name;
         newRow.append(newData);
         newData = document.createElement("td");
         newData.className = "text-center";
@@ -246,9 +132,42 @@ function leastEngaged(array) {
         newRow.append(newData);
       }
     });
+    let lastData;
     arr.reverse().forEach((element) => {
       j--;
+
+      let name = "";
+      function createName(person) {
+        if (person.middle_name == null) {
+          name = person.first_name + " " + person.last_name;
+        } else {
+          name =
+            person.first_name +
+            " " +
+            person.middle_name +
+            " " +
+            person.last_name;
+        }
+      }
+
       if (j >= 0) {
+        let newRow2 = document.createElement("tr");
+        topTen.append(newRow2);
+        let newData = document.createElement("td");
+        newData.className = "text-center";
+        createName(element);
+        newData.innerHTML = name;
+        newRow2.append(newData);
+        newData = document.createElement("td");
+        newData.className = "text-center";
+        newData.innerHTML = element.missed_votes;
+        newRow2.append(newData);
+        newData = document.createElement("td");
+        newData.className = "text-center";
+        newData.innerHTML = element.missed_votes_pct + "%";
+        newRow2.append(newData);
+        lastData = element.missed_votes_pct;
+      } else if (element.missed_votes_pct == lastData) {
         let newRow2 = document.createElement("tr");
         topTen.append(newRow2);
         let newData = document.createElement("td");

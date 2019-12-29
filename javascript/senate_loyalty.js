@@ -84,17 +84,26 @@ function senateLoyalty(array) {
   let bottomTen = document.getElementById("bottom10");
   let topTen = document.getElementById("top10");
 
+  let name = "";
+  function createName(person) {
+    if (person.middle_name == null) {
+      name = person.first_name + " " + person.last_name;
+    } else {
+      name =
+        person.first_name + " " + person.middle_name + " " + person.last_name;
+    }
+  }
+
   function createLoyaltyTable(arr) {
     arr.forEach((element) => {
       i--;
       if (i >= 0) {
-        console.log(i);
-
         let newRow = document.createElement("tr");
         bottomTen.append(newRow);
         let newData = document.createElement("td");
         newData.className = "text-center";
-        newData.innerHTML = element.first_name + " " + element.last_name;
+        createName(element);
+        newData.innerHTML = name;
         newRow.append(newData);
         newData = document.createElement("td");
         newData.className = "text-center";
@@ -110,12 +119,12 @@ function senateLoyalty(array) {
     arr.reverse().forEach((element) => {
       j--;
       if (j >= 0) {
-        console.log(j);
         let newRow2 = document.createElement("tr");
         topTen.append(newRow2);
         let newData = document.createElement("td");
         newData.className = "text-center";
-        newData.innerHTML = element.first_name + " " + element.last_name;
+        createName(element);
+        newData.innerHTML = name;
         newRow2.append(newData);
         newData = document.createElement("td");
         newData.className = "text-center";
