@@ -1,4 +1,4 @@
-let listDemo = [];
+/* let listDemo = [];
 let listRep = [];
 let listIndp = [];
 
@@ -14,7 +14,7 @@ function createLists(array) {
   });
 }
 
-createLists(houseData.results[0].members);
+createLists(houseData.results[0].members); */
 
 function houseGlance() {
   let rowDem = document.getElementById("houseGlanceDem");

@@ -1,6 +1,7 @@
 let listDemo = [];
 let listRep = [];
 let listIndp = [];
+let listMembers;
 
 function createLists(array) {
   array.forEach((element) => {
@@ -14,6 +15,37 @@ function createLists(array) {
   });
 }
 
+function getData() {
+  fetch(URL, {
+    headers: {
+      "X-API-Key": "E7gpCDZxoNHoNjc5XZE65kKGSRLMIUBHrFQUK9Hi"
+    }
+  })
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(function(data) {
+      listMembers = data.results[0];
+      createLists(listMembers.members);
+
+      if (
+        window.location.pathname === "/pages/senate.html" ||
+        window.location.pathname === "/pages/house.html"
+      ) {
+        displayDem(listDemo);
+        displayRep(listRep);
+        displayIndp(listIndp);
+      } else {
+        addData(listMembers.members);
+        createDataNos();
+      }
+    })
+    .catch(function(error) {
+      console.log("Request failed: " + error.message);
+    });
+}
 let filterRep = document.getElementById("filterRep");
 let filterDem = document.getElementById("filterDem");
 let filterIndp = document.getElementById("filterIndp");
@@ -45,7 +77,7 @@ function displayDem(array) {
 
       newData = document.createElement("td");
       createName(element);
-      newData.innerHTML = name;
+      newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
       newRow.append(newData);
 
       newData = document.createElement("td");
@@ -72,11 +104,6 @@ function displayDem(array) {
   }
 }
 
-filterDem.onchange = function filter() {
-  checkDem = !checkDem;
-  displayDem(listDemo);
-};
-
 function displayRep(array) {
   let box = document.getElementById("listTbody");
   if (checkRep) {
@@ -100,7 +127,7 @@ function displayRep(array) {
 
       newData = document.createElement("td");
       createName(element);
-      newData.innerHTML = name;
+      newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
       newRow.append(newData);
 
       newData = document.createElement("td");
@@ -127,11 +154,6 @@ function displayRep(array) {
   }
 }
 
-filterRep.onchange = function filter() {
-  checkRep = !checkRep;
-  displayRep(listRep);
-};
-
 function displayIndp(array) {
   let box = document.getElementById("listTbody");
   if (checkIndp) {
@@ -155,7 +177,7 @@ function displayIndp(array) {
 
       newData = document.createElement("td");
       createName(element);
-      newData.innerHTML = name;
+      newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
       newRow.append(newData);
 
       newData = document.createElement("td");
@@ -182,19 +204,24 @@ function displayIndp(array) {
   }
 }
 
-filterIndp.onchange = function filter() {
-  checkIndp = !checkIndp;
-  displayIndp(listIndp);
-};
+if (
+  window.location.pathname === "/pages/senate.html" ||
+  window.location.pathname === "/pages/house.html"
+) {
+  filterDem.onchange = function filter() {
+    checkDem = !checkDem;
+    displayDem(listDemo);
+  };
 
-function urlCheck() {
-  if (window.location.pathname === "/pages/senate.html") {
-    createLists(senateData.results[0].members);
-  } else if (window.location.pathname === "/pages/house.html") {
-    createLists(houseData.results[0].members);
-  }
-  displayDem(listDemo);
-  displayRep(listRep);
-  displayIndp(listIndp);
+  filterRep.onchange = function filter() {
+    checkRep = !checkRep;
+    displayRep(listRep);
+  };
+
+  filterIndp.onchange = function filter() {
+    checkIndp = !checkIndp;
+    displayIndp(listIndp);
+  };
 }
-urlCheck();
+
+getData();

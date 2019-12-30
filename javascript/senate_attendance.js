@@ -1,4 +1,4 @@
-let listDemo = [];
+/* let listDemo = [];
 let listRep = [];
 let listIndp = [];
 
@@ -12,11 +12,11 @@ function creatLists(array) {
       listDemo.push(element);
     }
   });
-}
+} 
 
-creatLists(senateData.results[0].members);
+creatLists(listMembers.members); */
 
-var statistics = {
+/* var statistics = {
   noDemo: listDemo.length,
   noRep: listRep.length,
   noIndp: listIndp.length,
@@ -25,7 +25,7 @@ var statistics = {
   votRep: 0,
   votIndp: 0,
   votTotal: 0
-};
+}; */
 
 function createDataNos() {
   let rowDem = document.getElementById("attGlanceDem");
@@ -168,6 +168,6 @@ function leastEngaged(array) {
   createBottomTop(array);
 }
 
-leastEngaged(senateData.results[0].members);
+/* leastEngaged(senateData.results[0].members); */
 
-createDataNos();
+/* createDataNos(); */
