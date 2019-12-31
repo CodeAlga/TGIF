@@ -15,6 +15,10 @@ function createLists(array) {
   });
 }
 
+//
+// FETCH FROM API
+//
+
 function getData() {
   fetch(URL, {
     headers: {
@@ -37,6 +41,7 @@ function getData() {
         displayDem(listDemo);
         displayRep(listRep);
         displayIndp(listIndp);
+        states(listMembers.members);
       } else {
         addData(listMembers.members);
         createDataNos();
@@ -46,6 +51,11 @@ function getData() {
       console.log("Request failed: " + error.message);
     });
 }
+
+//
+// CREATE SENATE AND HOUSE DYNAMIC FULL TABLES
+//
+
 let filterRep = document.getElementById("filterRep");
 let filterDem = document.getElementById("filterDem");
 let filterIndp = document.getElementById("filterIndp");
@@ -103,6 +113,10 @@ function displayDem(array) {
     });
   }
 }
+
+//
+// FILTERING FUNCTIONS
+//
 
 function displayRep(array) {
   let box = document.getElementById("listTbody");
@@ -202,6 +216,22 @@ function displayIndp(array) {
       box.removeChild(box.childNodes[0]);
     });
   }
+}
+
+function states(array) {
+  let allStates = ["All States"];
+  let dropdownStates = document.getElementById("statesMenu");
+  let newLi = document.createElement("li");
+  dropdownStates.append(newLi);
+  newLi.innerHTML = "<li class='dropdown-item'>" + allStates[0] + "</li>";
+  array.forEach((element) => {
+    if (allStates.includes(element.state) === false) {
+      allStates.push(element.state);
+      let newLi = document.createElement("li");
+      dropdownStates.append(newLi);
+      newLi.innerHTML = "<li class='dropdown-item'>" + element.state + "</li>";
+    }
+  });
 }
 
 if (

@@ -157,8 +157,8 @@
         federal officials impeached by the House.
       </p>
     </div>
-    <div class="container py-3">
-      <ul class="d-flex list-unstyled align-items-center">
+    <div class="container py-3 rounded bg-light my-3">
+      <ul class="d-flex flex-row list-unstyled m-0">
         <li class="pr-4">Filter by Party</li>
         <li class="px-4">
           <label class="form-check-label" for="filterRep"
@@ -195,6 +195,20 @@
             />
             Independent</label
           >
+        </li>
+        <li class="px-4 dropdown active ml-auto">
+          <a
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+            >Select State</a
+          >
+          <ul
+            id="statesMenu"
+            class="dropdown-menu pre-scrollable"
+            aria-labelledby="dropdown01"
+          ></ul>
         </li>
       </ul>
     </div>
