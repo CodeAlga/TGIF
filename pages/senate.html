@@ -158,7 +158,7 @@
       </p>
     </div>
     <div class="container py-3 rounded bg-light my-3">
-      <ul class="d-flex flex-row list-unstyled m-0">
+      <ul class="d-flex flex-row list-unstyled m-0 align-items-center">
         <li class="pr-4">Filter by Party</li>
         <li class="px-4">
           <label class="form-check-label" for="filterRep"
@@ -197,18 +197,12 @@
           >
         </li>
         <li class="px-4 dropdown active ml-auto">
-          <a
-            class="dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="true"
-            >Select State</a
-          >
-          <ul
+          <select
             id="statesMenu"
-            class="dropdown-menu pre-scrollable"
-            aria-labelledby="dropdown01"
-          ></ul>
+            class="custom-select pre-scrollable m-0"
+            aria-labelledby="Select State"
+          >
+          </select>
         </li>
       </ul>
     </div>
@@ -237,8 +231,21 @@
             </th>
           </tr>
         </thead>
+
         <tbody id="listTbody"></tbody>
       </table>
+
+      <div id="loader" class="sk-cube-grid">
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+      </div>
     </div>
     <footer class="footer bg-light">
       <div class="container">
@@ -269,8 +276,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <!--     <script src="../javascript/113_senate.js"></script>
-    <script src="../javascript/113_house.js"></script> -->
     <script src="../javascript/secondary.js"></script>
     <script src="../javascript/main.js"></script>
   </body>
