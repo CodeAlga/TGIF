@@ -1,4 +1,4 @@
-let listDemo = [];
+/* let listDemo = [];
 let listRep = [];
 let listIndp = [];
 
@@ -14,7 +14,7 @@ function creatLists(array) {
   });
 }
 
-creatLists(senateData.results[0].members);
+creatLists(senateData.results[0].members); */
 
 function senateGlance() {
   let rowDem = document.getElementById("attGlanceDem");
