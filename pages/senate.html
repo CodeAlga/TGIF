@@ -19,6 +19,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <title>Home of TGIF</title>
   </head>
@@ -232,7 +234,19 @@
           </tr>
         </thead>
 
-        <tbody id="listTbody"></tbody>
+        <tbody id="listTbody">
+          <template v-for="member in members">
+            <tr>
+              <td>
+                {{ member.first_name }} {{ member.last_name}}
+              </td>
+              <td>{{ member.party }}</td>
+              <td>{{ member.state }}</td>
+              <td>{{ member.seniority}}</td>
+              <td>{{ member.votes_with_party_pct}}</td>
+            </tr>
+          </template>
+        </tbody>
       </table>
 
       <div id="loader" class="sk-cube-grid">
