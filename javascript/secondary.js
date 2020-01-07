@@ -67,14 +67,21 @@ function createDataNos() {
 
       var newData = document.createElement("td");
       newData.className = "text-center";
-      newData.innerHTML = (total / partyReps[i]).toFixed(2) + "%";
-
+      if ((total / partyReps[i]).toFixed(2) == "NaN") {
+        newData.innerHTML = "0%";
+      } else {
+        newData.innerHTML = (total / partyReps[i]).toFixed(2) + "%";
+      }
       innArray1[i].append(newData);
       totalParty = totalParty + total;
     }
     newData = document.createElement("td");
     newData.className = "text-center";
-    newData.innerHTML = (totalParty / 105).toFixed(2) + "%";
+    if (currentLocation == 0) {
+      newData.innerHTML = (totalParty / 105).toFixed(2) + "%";
+    } else if (currentLocation == 1) {
+      newData.innerHTML = (totalParty / 450).toFixed(2) + "%";
+    }
     rowTotal.append(newData);
   }
 
