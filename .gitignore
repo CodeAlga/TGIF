@@ -1,14 +1,13 @@
 # TGIF
 
 materiales/
-json_files/113_house.json
-json_files/113_senate-json
+at_json_files/
 stylesheet/bootstrap-4.0.0
 stylesheet/bootstrap-4.4.1-dist
 stylesheet/bootstrap.min.css
-javascript/113_house.js
-javascript/113_senate.js
-javascript/house_attendance.js
-javascript/house_loyalty.js
-javascript/senate_attendace.js
-javascript/senate_loyalty.js
+js/113_house.js
+js/113_senate.js
+js/house_attendance.js
+js/house_loyalty.js
+js/senate_attendace.js
+js/senate_loyalty.js
