@@ -234,19 +234,7 @@
           </tr>
         </thead>
 
-        <tbody id="listTbody">
-          <template v-for="member in members">
-            <tr>
-              <td>
-                {{ member.first_name }} {{ member.last_name}}
-              </td>
-              <td>{{ member.party }}</td>
-              <td>{{ member.state }}</td>
-              <td>{{ member.seniority}}</td>
-              <td>{{ member.votes_with_party_pct}}</td>
-            </tr>
-          </template>
-        </tbody>
+        <tbody id="listTbody"></tbody>
       </table>
 
       <div id="loader" class="sk-cube-grid">
