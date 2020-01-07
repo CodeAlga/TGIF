@@ -38,7 +38,6 @@ function getData() {
       listMembers = data.results[0];
       createLists(listMembers.members);
       init();
-      console.log(listIndp);
     })
     .catch(function(error) {
       console.log("Request failed: " + error.message);
