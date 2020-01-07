@@ -5,9 +5,3 @@ at_json_files/
 stylesheet/bootstrap-4.0.0
 stylesheet/bootstrap-4.4.1-dist
 stylesheet/bootstrap.min.css
-js/113_house.js
-js/113_senate.js
-js/house_attendance.js
-js/house_loyalty.js
-js/senate_attendace.js
-js/senate_loyalty.js
