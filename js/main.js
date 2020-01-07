@@ -40,7 +40,7 @@ function getData() {
       init();
     })
     .catch(function(error) {
-      console.log("Request failed: " + error.message);
+      /* console.log("Request failed: " + error.message); */
     });
 }
 
