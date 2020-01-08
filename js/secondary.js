@@ -6,16 +6,16 @@ let URLpos = [
 let currentLocation = 0;
 
 if (
-  window.location.pathname.includes === "/pages/senate.html" ||
-  window.location.pathname.includes === "/pages/senate-attendance.html" ||
-  window.location.pathname.includes === "/pages/senate-loyalty.html"
+  window.location.pathname.includes("/pages/senate.html") ||
+  window.location.pathname.includes("/pages/senate-attendance.html") ||
+  window.location.pathname.includes("/pages/senate-loyalty.html")
 ) {
   URL = URLpos[0];
   currentLocation = 0;
 } else if (
-  window.location.pathname.includes === "/pages/house.html" ||
-  window.location.pathname.includes === "/pages/house-attendance.html" ||
-  window.location.pathname.includes === "/pages/house-loyalty.html"
+  window.location.pathname.includes("/pages/house.html") ||
+  window.location.pathname.includes("/pages/house-attendance.html") ||
+  window.location.pathname.includes("/pages/house-loyalty.html")
 ) {
   URL = URLpos[1];
   currentLocation = 1;
