@@ -159,7 +159,7 @@
         federal officials impeached by the House.
       </p>
     </div>
-    <div class="container py-3 rounded bg-light my-3">
+    <div class="container py-3 rounded bg-light my-3" id="filters">
       <ul class="d-flex flex-row list-unstyled m-0 align-items-center">
         <li class="pr-4">Filter by Party</li>
         <li class="px-4">
@@ -233,19 +233,10 @@
             </th>
           </tr>
         </thead>
-
-        <tbody id="listTbody">
-          <tr v-for="member of members">
-            <td>{{ member.first_name }} {{ member.last_name }}</td>
-            <td>{{ member.party }}</td>
-            <td>{{ member.state }}</td>
-            <td>{{ member.seniority }}</td>
-            <td>{{ member.votes_with_party_pct }}</td>
-          </tr>
-        </tbody>
+        <tbody id="listTbody" is="dynamicTable"></tbody id="listTbody">
       </table>
 
-      <div id="loader" class="sk-cube-grid">
+      <div id="loader" class="sk-cube-grid d-none">
         <div class="sk-cube sk-cube1"></div>
         <div class="sk-cube sk-cube2"></div>
         <div class="sk-cube sk-cube3"></div>
@@ -268,27 +259,31 @@
     <!-- --- SCRIPT LOADING--- -->
 
     <script
+      type="application/javascript"
       src="https://kit.fontawesome.com/a8f0a724d4.js"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
 
-    <script src="../js/113_senate.js"></script>
-    <script src="../js/113_house.js"></script>
-    <script src="../js/main_vue.js"></script>
+    <script type="application/javascript" src="../js/113_senate.js"></script>
+    <script type="application/javascript" src="../js/113_house.js"></script>
+    <script type="application/javascript" src="../js/main_vue.js"></script>
   </body>
 </html>
