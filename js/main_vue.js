@@ -1,30 +1,24 @@
 //
 // VUE JS FOR TABLE
 //
-/* 
-Vue.component("dynamicTable", {
-  data: function() {
-    return {
-      people: []
-    };
-    console.log(people);
-  },
-
-  template:
-    '<tbody><tr v-for="member of members"><td><a v-bind:href="member.url">{{ member.first_name }} {{ member.middle_name }} {{ member.last_name }}</a></td><td>{{ member.party }}</td><td>{{ member.state }}</td><td>{{ member.seniority }}</td><td>{{ member.votes_with_party_pct }}</td></tr></tbody>'
-});
- */
 
 let table = new Vue({
   el: "#listTbody",
   data: {
-    members: []
+    members: [],
+    filteredMembers: [],
+    partyFilter: [
+      { name: "Democrats", value: "D" },
+      { name: "Republicans", value: "R" },
+      { name: "Independents", value: "I" }
+    ],
+    checkedFilters: ["D", "R", "I"],
+    allStates: [],
+    selectedState: ["All States"]
   },
 
-  template:
-    '<tbody><tr v-for="member of members"><td><a v-bind:href="member.url">{{ member.first_name }} {{ member.middle_name }} {{ member.last_name }}</a></td><td>{{ member.party }}</td><td>{{ member.state }}</td><td>{{ member.seniority }}</td><td>{{ member.votes_with_party_pct }}</td></tr></tbody>',
   methods: {
-    /* getData() {
+    /*  getData() {
       fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
         headers: {
           "X-API-Key": "E7gpCDZxoNHoNjc5XZE65kKGSRLMIUBHrFQUK9Hi"
@@ -42,27 +36,43 @@ let table = new Vue({
           console.log("Request failed: " + error.message);
         });
     } */
+
     getData: function() {
       table.members = senateData.results[0].members;
     },
 
     states: function(array) {
-      let allStates = ["All States"];
-      filterState = document.getElementById("statesMenu");
-      let newOption = document.createElement("option");
-      newOption.className = "dropdown-item";
-      newOption.value = allStates[0];
-      filterState.append(newOption);
-      newOption.innerHTML = allStates[0];
+      //let allStates = [];
       array.forEach((element) => {
-        if (allStates.includes(element.state) === false) {
-          allStates.push(element.state);
-          let newOption = document.createElement("option");
-          newOption.className = "dropdown-item";
-          newOption.value = element.state;
-          filterState.append(newOption);
-          newOption.innerHTML = element.state;
+        if (table.allStates.includes(element.state) === false) {
+          table.allStates.push(element.state);
+          table.allStates.sort();
         }
+      });
+      table.allStates.unshift("All States");
+      /* filterState = document.getElementById("statesMenu");
+      allStates.forEach((item) => {
+        let newOption = document.createElement("option");
+        newOption.className = "dropdown-item";
+        newOption.value = item;
+        newOption.innerText = item;
+        filterState.append(newOption);
+      }); */
+    },
+
+    log(item) {
+      console.log(item);
+    }
+  },
+
+  computed: {
+    filterMembers: function() {
+      /* return this.members.filter((member) =>
+        this.checkedFilters.includes(member.party)
+      ); */
+
+      return this.members.filter(function(member) {
+        return table.checkedFilters.includes(member.party);
       });
     }
   }
