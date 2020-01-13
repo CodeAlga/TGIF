@@ -129,3 +129,7 @@ body a:hover,
     transform: scale3D(0, 0, 1);
   }
 }
+
+.available {
+  display: none;
+}

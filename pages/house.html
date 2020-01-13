@@ -20,6 +20,8 @@
     />
     <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <title>Home of TGIF</title>
   </head>
 
@@ -159,10 +161,24 @@
         least one representative.
       </p>
     </div>
-    <div class="container py-3 rounded bg-light my-3">
-      <ul class="d-flex flex-row list-unstyled m-0 align-items-center">
-        <li class="pr-4">Filter by Party</li>
-        <li class="px-4">
+    <div id="tables">
+      <div class="container py-3 rounded bg-light my-3">
+        <ul class="d-flex flex-row list-unstyled m-0 align-items-center">
+          <li class="pr-4">Filter by Party</li>
+          <li v-for="party of partyFilter" class="px-4">
+            <label class="form-check-label" v-bind:for="party.name"
+              ><input
+                class="form-check-input"
+                type="checkbox"
+                v-bind:id="party.name"
+                v-bind:value="party.value"
+                checked
+                v-model="checkedFilters"
+              />
+              {{ party.name }}
+            </label>
+          </li>
+          <!-- <li class="px-4">
           <label class="form-check-label" for="filterRep"
             ><input
               class="form-check-input"
@@ -196,55 +212,68 @@
               disabled
             />
             Independent</label
-          >
-        </li>
-        <li class="px-4 dropdown active ml-auto">
-          <select
-            id="statesMenu"
-            class="custom-select pre-scrollable m-0"
-            aria-labelledby="Select State"
-          ></select>
-        </li>
-      </ul>
-    </div>
+          > 
+          </li>-->
 
-    <div class="container table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <caption>
-          Members of the House of Representatives
-        </caption>
-        <thead class="bg-info text-light">
-          <tr>
-            <th class="text-center">
-              Name
-            </th>
-            <th class="text-center">
-              Party
-            </th>
-            <th class="text-center">
-              State
-            </th>
-            <th class="text-center">
-              Years in Office
-            </th>
-            <th class="text-center">
-              % of votes w/ Party
-            </th>
-          </tr>
-        </thead>
-        <tbody id="listTbody"></tbody>
-      </table>
+          <li class="px-4 dropdown active ml-auto">
+            <select
+              id="statesMenu"
+              class="custom-select pre-scrollable m-0"
+              aria-labelledby="Select State"
+              v-model="selectedState"
+            >
+              <option
+                v-for="state of allStates"
+                class="dropdown-item"
+                v-bind:value="state"
+                >{{ state }}</option
+              >
+            </select>
+          </li>
+        </ul>
+      </div>
 
-      <div id="loader" class="sk-cube-grid">
-        <div class="sk-cube sk-cube1"></div>
-        <div class="sk-cube sk-cube2"></div>
-        <div class="sk-cube sk-cube3"></div>
-        <div class="sk-cube sk-cube4"></div>
-        <div class="sk-cube sk-cube5"></div>
-        <div class="sk-cube sk-cube6"></div>
-        <div class="sk-cube sk-cube7"></div>
-        <div class="sk-cube sk-cube8"></div>
-        <div class="sk-cube sk-cube9"></div>
+      <div class="container table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <caption>
+            Members of the Senate
+          </caption>
+          <thead class="bg-info text-light">
+            <tr>
+              <th class="text-center ">Name</th>
+              <th class="text-center">Party</th>
+              <th class="text-center">State</th>
+              <th class="text-center">Years in Office</th>
+              <th class="text-center">% of votes w/ Party</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="member in filterMembers">
+              <td>
+                <a v-bind:href="member.url"
+                  >{{ member.first_name }} {{ member.middle_name }} {{
+                  member.last_name }}</a
+                >
+              </td>
+              <td>{{ member.party }}</td>
+              <td>{{ member.state }}</td>
+              <td>{{ member.seniority }}</td>
+              <td>{{ member.votes_with_party_pct }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div id="loader" class="sk-cube-grid">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        </div>
       </div>
     </div>
     <footer class="footer bg-light">
@@ -258,25 +287,30 @@
     <!-- --- SCRIPT LOADING--- -->
 
     <script
+      type="application/javascript"
       src="https://kit.fontawesome.com/a8f0a724d4.js"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/secondary.js"></script>
-    <script src="../js/main.js"></script>
+    <script type="application/javascript" src="../js/113_senate.js"></script>
+    <script type="application/javascript" src="../js/113_house.js"></script>
+    <script type="application/javascript" src="../js/main_vue.js"></script>
   </body>
 </html>

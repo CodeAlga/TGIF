@@ -159,11 +159,10 @@
         federal officials impeached by the House.
       </p>
     </div>
-    <div id="listTbody">
-      <div class="container py-3 rounded bg-light my-3" id="filters">
+    <div id="tables">
+      <div class="container py-3 rounded bg-light my-3">
         <ul class="d-flex flex-row list-unstyled m-0 align-items-center">
           <li class="pr-4">Filter by Party</li>
-
           <li v-for="party of partyFilter" class="px-4">
             <label class="form-check-label" v-bind:for="party.name"
               ><input
@@ -213,6 +212,7 @@
               />Independent</label
             >
           </li> -->
+
           <li class="px-4 dropdown active ml-auto">
             <select
               id="statesMenu"
@@ -247,21 +247,21 @@
           </thead>
           <tbody>
             <tr v-for="member in filterMembers">
-              <td>
+              <td class="text-center">
                 <a v-bind:href="member.url"
                   >{{ member.first_name }} {{ member.middle_name }} {{
                   member.last_name }}</a
                 >
               </td>
-              <td>{{ member.party }}</td>
-              <td>{{ member.state }}</td>
-              <td>{{ member.seniority }}</td>
-              <td>{{ member.votes_with_party_pct }}</td>
+              <td class="text-center">{{ member.party }}</td>
+              <td class="text-center">{{ member.state }}</td>
+              <td class="text-center">{{ member.seniority }}</td>
+              <td class="text-center">{{ member.votes_with_party_pct }}</td>
             </tr>
           </tbody>
         </table>
 
-        <div id="loader" class="sk-cube-grid d-none">
+        <div id="loader" class="sk-cube-grid">
           <div class="sk-cube sk-cube1"></div>
           <div class="sk-cube sk-cube2"></div>
           <div class="sk-cube sk-cube3"></div>

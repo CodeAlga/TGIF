@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../stylesheet/stylesheet.css" />
-
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Home of TGIF</title>
   </head>
 
@@ -139,102 +139,134 @@
     </nav>
 
     <!-- PAGE CONTENT-->
-    <div class="container-fluid d-flex flex-md-row flex-sm-column mt-5">
-      <div class="container py-5 col-md-6 col-sm-12 align-self-center">
-        <h2>Party Loyalty</h2>
-        <p class="text-justify">
-          <span class="ml-4">Those</span> who consider themselves to be strong
-          partisans, strong Democrats and strong Republicans respectively, tend
-          to be the most faithful in voting for their party's nominee for office
-          and legislation that backs their party's agenda.
-        </p>
+    <div id="tables">
+      <div class="container-fluid d-flex flex-md-row flex-sm-column mt-5">
+        <div class="container py-5 col-md-6 col-sm-12 align-self-center">
+          <h2>Party Loyalty</h2>
+          <p class="text-justify">
+            <span class="ml-4">Those</span> who consider themselves to be strong
+            partisans, strong Democrats and strong Republicans respectively,
+            tend to be the most faithful in voting for their party's nominee for
+            office and legislation that backs their party's agenda.
+          </p>
+        </div>
+
+        <!-- --- TABLES --- -->
+
+        <div
+          class="container table-responsive col-md-6 col-sm-12 align-self-center"
+        >
+          <table class="table table-striped table-bordered table-hover">
+            <h3 class="float-right">
+              House at a glance
+            </h3>
+            <thead class="bg-info text-light">
+              <tr>
+                <th class="text-center">
+                  Party
+                </th>
+                <th class="text-center">
+                  Nº of Reps.
+                </th>
+                <th class="text-center">
+                  % Voted w/ Party
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="attGlanceDem">
+                <td>Democats</td>
+                <td class="text-center">{{ demReps }}</td>
+                <td class="text-center">{{ demVoted }}%</td>
+              </tr>
+              <tr id="attGlanceRep">
+                <td>Republicans</td>
+                <td class="text-center">{{ repReps }}</td>
+                <td class="text-center">{{ repVoted }}%</td>
+              </tr>
+              <tr id="attGlanceIndp">
+                <td>Independents</td>
+                <td class="text-center">{{ indpReps }}</td>
+                <td class="text-center">{{ indpVoted }}%</td>
+              </tr>
+              <tr id="attGlanceTotal">
+                <td>Total</td>
+                <td class="text-center">{{ totalReps }}</td>
+                <td class="text-center">{{ totalVoted }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- --- TABLES --- -->
+      <div class="container-fluid d-flex flex-md-row flex-sm-column">
+        <div class="container table-responsive col-md-6 col-sm-12">
+          <table class="table table-striped table-bordered table-hover">
+            <h3 class="float-right">
+              Least Loyal (Bottom 10% of Party)
+            </h3>
+            <thead class="bg-info text-light">
+              <tr>
+                <th class="text-center">
+                  Name
+                </th>
+                <th class="text-center">
+                  Nº Party Votes
+                </th>
+                <th class="text-center">
+                  % Party Votes
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="member in bottomTenMembers">
+                <td class="text-center">
+                  <a v-bind:href="member.url"
+                    >{{ member.first_name }} {{ member.middle_name }} {{
+                    member.last_name }}</a
+                  >
+                </td>
+                <td class="text-center">{{ member.missed_votes }}</td>
+                <td class="text-center">{{ member.missed_votes_pct }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div
-        class="container table-responsive col-md-6 col-sm-12 align-self-center"
-      >
-        <table class="table table-striped table-bordered table-hover">
-          <h3 class="float-right">
-            House at a glance
-          </h3>
-          <thead class="bg-info text-light">
-            <tr>
-              <th class="text-center">
-                Party
-              </th>
-              <th class="text-center">
-                Nº of Reps.
-              </th>
-              <th class="text-center">
-                % Voted w/ Party
-              </th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-          <tr id="houseGlanceDem">
-            <td>Democats</td>
-          </tr>
-          <tr id="houseGlanceRep">
-            <td>Republicans</td>
-          </tr>
-          <tr id="houseGlanceIndp">
-            <td>Independents</td>
-          </tr>
-          <tr id="houseGlanceTotal">
-            <td>Total</td>
-          </tr>
-        </table>
+        <div class="container table-responsive col-md-6 col-sm-12">
+          <table class="table table-striped table-bordered table-hover">
+            <h3 class="float-right">
+              Most Loyal (Top 10% of Party)
+            </h3>
+            <thead class="bg-info text-light">
+              <tr>
+                <th class="text-center">
+                  Name
+                </th>
+                <th class="text-center">
+                  Nº Party Votes
+                </th>
+                <th class="text-center">
+                  % Party Votes
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="member in topTenMembers">
+                <td class="text-center">
+                  <a v-bind:href="member.url"
+                    >{{ member.first_name }} {{ member.middle_name }} {{
+                    member.last_name }}</a
+                  >
+                </td>
+                <td class="text-center">{{ member.missed_votes }}</td>
+                <td class="text-center">{{ member.missed_votes_pct }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-
-    <div class="container-fluid d-flex flex-md-row flex-sm-column">
-      <div class="container table-responsive col-md-6 col-sm-12">
-        <table class="table table-striped table-bordered table-hover">
-          <h3 class="float-right">
-            Least Loyal (Bottom 10% of Party)
-          </h3>
-          <thead class="bg-info text-light">
-            <tr>
-              <th class="text-center">
-                Name
-              </th>
-              <th class="text-center">
-                Nº Party Votes
-              </th>
-              <th class="text-center">
-                % Party Votes
-              </th>
-            </tr>
-          </thead>
-          <tbody id="bottom10"></tbody>
-        </table>
-      </div>
-
-      <div class="container table-responsive col-md-6 col-sm-12">
-        <table class="table table-striped table-bordered table-hover">
-          <h3 class="float-right">
-            Most Loyal (Top 10% of Party)
-          </h3>
-          <thead class="bg-info text-light">
-            <tr>
-              <th class="text-center">
-                Name
-              </th>
-              <th class="text-center">
-                Nº Party Votes
-              </th>
-              <th class="text-center">
-                % Party Votes
-              </th>
-            </tr>
-          </thead>
-          <tbody id="top10"></tbody>
-        </table>
-      </div>
-    </div>
-
     <div id="loader" class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
@@ -260,25 +292,30 @@
     <!-- --- SCRIPT LOADING--- -->
 
     <script
+      type="application/javascript"
       src="https://kit.fontawesome.com/a8f0a724d4.js"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"
     ></script>
     <script
+      type="application/javascript"
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="../js/secondary.js"></script>
-    <script src="../js/main.js"></script>
+    <script type="application/javascript" src="../js/113_senate.js"></script>
+    <script type="application/javascript" src="../js/113_house.js"></script>
+    <script type="application/javascript" src="../js/main_vue.js"></script>
   </body>
 </html>

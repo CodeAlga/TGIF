@@ -184,8 +184,8 @@ function filter() {
 //
 
 if (
-  window.location.pathname === "/pages/senate.html" ||
-  window.location.pathname === "/pages/house.html"
+  window.location.pathname.includes("/pages/senate.html") ||
+  window.location.pathname.includes("/pages/house.html")
 ) {
   filterDem.onchange = function call() {
     checkDem = !checkDem;
@@ -235,8 +235,8 @@ getData();
 
 function init() {
   if (
-    window.location.pathname === "/pages/senate.html" ||
-    window.location.pathname === "/pages/house.html"
+    window.location.pathname.includes("/pages/senate.html") ||
+    window.location.pathname.includes("/pages/house.html")
   ) {
     dynamicTable(listMembers.members);
     states(listMembers.members);
