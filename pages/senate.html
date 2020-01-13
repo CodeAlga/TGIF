@@ -258,10 +258,19 @@
               <td class="text-center">{{ member.seniority }}</td>
               <td class="text-center">{{ member.votes_with_party_pct }}</td>
             </tr>
+            <tr v-if="filterMembers.length == 0">
+              <td colspan="5" class="text-center p-3 font-weight-bold">
+                No data matches that criteria
+              </td>
+            </tr>
           </tbody>
         </table>
 
-        <div id="loader" class="sk-cube-grid">
+        <div
+          id="loader"
+          class="sk-cube-grid"
+          v-bind:class="{ 'd-none': alternate }"
+        >
           <div class="sk-cube sk-cube1"></div>
           <div class="sk-cube sk-cube2"></div>
           <div class="sk-cube sk-cube3"></div>

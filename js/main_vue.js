@@ -6,7 +6,7 @@ let table = new Vue({
   el: "#tables",
   data: {
     members: [],
-    filteredMembers: [],
+    //filteredMembers: [],
     topTenMembers: [],
     bottomTenMembers: [],
 
@@ -33,8 +33,15 @@ let table = new Vue({
   },
 
   methods: {
-    /* getData() {
-      fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+    getData: function() {
+      let url = "";
+      if (window.location.pathname.includes("senate")) {
+        url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+      } else if (window.location.pathname.includes("house")) {
+        url = "https://api.propublica.org/congress/v1/113/house/members.json";
+      }
+
+      fetch(url, {
         headers: {
           "X-API-Key": "E7gpCDZxoNHoNjc5XZE65kKGSRLMIUBHrFQUK9Hi"
         }
@@ -46,28 +53,32 @@ let table = new Vue({
         })
         .then((data) => {
           table.members = data.results[0].members;
+          table.states(table.members);
+          table.createData(table.members);
+          table.topBottom(table.members);
         })
         .catch((error) => {
           console.log("Request failed: " + error.message);
         });
-    }, */
+    },
 
-    getData: function() {
+    /* getData: function() {
       if (window.location.pathname.includes("senate")) {
         table.members = senateData.results[0].members;
       } else if (window.location.pathname.includes("house")) {
         table.members = houseData.results[0].members;
       }
-    },
+    }, */
 
     states: function(array) {
       array.forEach((element) => {
-        if (table.allStates.includes(element.state) === false) {
+        if (table.allStates.includes(element.state) == false) {
           table.allStates.push(element.state);
           table.allStates.sort();
         }
       });
-      table.allStates.unshift("All States");
+      this.allStates.unshift("All States");
+      this.alternate = !this.alternate;
     },
 
     topBottom: function(array) {
@@ -81,7 +92,7 @@ let table = new Vue({
         return 0;
       });
 
-      const perc = Math.floor((array.length / 100) * 10);
+      const perc = (table.totalReps / 100) * 10;
       let i = perc,
         j = perc;
       array.forEach((element) => {
@@ -118,8 +129,8 @@ let table = new Vue({
         }
       });
 
-      table.demVoted = +(table.demVoted / table.demReps).toFixed(2);
-      table.repVoted = +(table.repVoted / table.repReps).toFixed(2);
+      table.demVoted = +(table.demVoted / table.demReps).toFixed(2) || 0;
+      table.repVoted = +(table.repVoted / table.repReps).toFixed(2) || 0;
       table.indpVoted = +(table.indpVoted / table.indpReps).toFixed(2) || 0;
       table.totalVoted = +(table.totalVoted / table.totalReps).toFixed(2);
     },
@@ -131,9 +142,9 @@ let table = new Vue({
 
   computed: {
     filterMembers: function() {
-      if (table.selectedState == "All States") {
+      if (this.selectedState == "All States") {
         return this.members.filter((member) => {
-          table.checkedFilters.includes(member.party);
+          return table.checkedFilters.includes(member.party);
         });
       } else if (table.selectedState != "All States") {
         return this.members.filter(function(member) {
@@ -144,14 +155,14 @@ let table = new Vue({
         });
       }
     }
-  }
-  /* created() {
+  },
+
+  created() {
     this.getData();
-    this.topBottom(table.members);
-  } */
+  }
 });
 
-table.getData();
-table.states(table.members);
-table.topBottom(table.members);
-table.createData(table.members);
+//table.getData();
+// table.states(table.members);
+//table.topBottom(table.members);
+//table.createData(table.members);
