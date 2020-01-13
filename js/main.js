@@ -114,22 +114,21 @@ function dynamicTable(array) {
 //
 
 function states(array) {
-  let allStates = ["All States"];
+  let allStates = [];
   filterState = document.getElementById("statesMenu");
-  let newOption = document.createElement("option");
-  newOption.className = "dropdown-item";
-  newOption.value = allStates[0];
-  filterState.append(newOption);
-  newOption.innerHTML = allStates[0];
   array.forEach((element) => {
     if (allStates.includes(element.state) === false) {
       allStates.push(element.state);
-      let newOption = document.createElement("option");
-      newOption.className = "dropdown-item";
-      newOption.value = element.state;
-      filterState.append(newOption);
-      newOption.innerHTML = element.state;
     }
+  });
+  allStates.sort();
+  allStates.unshift("All States");
+  allStates.forEach((state) => {
+    let newOption = document.createElement("option");
+    newOption.className = "dropdown-item";
+    newOption.value = state;
+    newOption.innerHTML = state;
+    filterState.append(newOption);
   });
 }
 
