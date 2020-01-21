@@ -98,7 +98,7 @@ function addData(array) {
     return 0;
   });
 
-  function createName(person) {
+  let createName = (person) => {
     let name = "";
     if (person.middle_name == null) {
       name = person.first_name + " " + person.last_name;
@@ -107,18 +107,17 @@ function addData(array) {
         person.first_name + " " + person.middle_name + " " + person.last_name;
     }
     return name;
-  }
+  };
 
-  function template(localStore) {
-    let template = `<tr>
+  let template = (localStore) => {
+    return `<tr>
     <td class="text-center"><a href="${localStore.url}">${createName(
       localStore
     )}</a></td>
     <td class="text-center">${localStore.missed_votes}</td>
     <td class="text-center">${localStore.missed_votes_pct} %</td>
     </tr>`;
-    return template;
-  }
+  };
 
   function createBottomTop(arr) {
     const perc = Math.floor((array.length / 100) * 10);
