@@ -51,7 +51,7 @@ function createDataNos() {
     }
     newData = document.createElement("td");
     newData.className = "text-center";
-    newData.innerHTML = listDemo.length + listRep.length + listIndp.length;
+    newData.innerHTML = listMembers.members.length;
     rowTotal.append(newData);
   }
   distributeData(globalStoreA, globalStoreB);
@@ -77,11 +77,10 @@ function createDataNos() {
     }
     newData = document.createElement("td");
     newData.className = "text-center";
-    if (currentLocation == 0) {
-      newData.innerHTML = (totalParty / 105).toFixed(2) + "%";
-    } else if (currentLocation == 1) {
-      newData.innerHTML = (totalParty / 450).toFixed(2) + "%";
-    }
+    newData.innerHTML =
+      (totalParty / listMembers.members.length).toFixed(2) + "%";
+    newData.innerHTML =
+      (totalParty / listMembers.members.length).toFixed(2) + "%";
     rowTotal.append(newData);
   }
 
@@ -99,81 +98,51 @@ function addData(array) {
     return 0;
   });
 
+  function createName(person) {
+    let name = "";
+    if (person.middle_name == null) {
+      name = person.first_name + " " + person.last_name;
+    } else {
+      name =
+        person.first_name + " " + person.middle_name + " " + person.last_name;
+    }
+    return name;
+  }
+
+  function template(localStore) {
+    let template = `<tr>
+    <td class="text-center"><a href="${localStore.url}">${createName(
+      localStore
+    )}</a></td>
+    <td class="text-center">${localStore.missed_votes}</td>
+    <td class="text-center">${localStore.missed_votes_pct} %</td>
+    </tr>`;
+    return template;
+  }
+
   function createBottomTop(arr) {
     const perc = Math.floor((array.length / 100) * 10);
     let i = perc,
       j = perc;
     let bottomTen = document.getElementById("bottom10");
     let topTen = document.getElementById("top10");
-
-    let name = "";
-    function createName(person) {
-      if (person.middle_name == null) {
-        name = person.first_name + " " + person.last_name;
-      } else {
-        name =
-          person.first_name + " " + person.middle_name + " " + person.last_name;
-      }
-    }
+    let lastData;
+    let newRow = document.createElement("tr");
 
     arr.forEach((element) => {
       i--;
       if (i >= 0) {
-        let newRow = document.createElement("tr");
-        bottomTen.append(newRow);
-        let newData = document.createElement("td");
-        newData.className = "text-center";
-        createName(element);
-        newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
-        newRow.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes;
-        newRow.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes_pct + "%";
-        newRow.append(newData);
+        bottomTen.innerHTML += template(element);
       }
     });
-    let lastData;
 
     arr.reverse().forEach((element) => {
       j--;
-
       if (j >= 0) {
-        let newRow2 = document.createElement("tr");
-        topTen.append(newRow2);
-        let newData = document.createElement("td");
-        newData.className = "text-center";
-        createName(element);
-        newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes;
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes_pct + "%";
-        newRow2.append(newData);
+        topTen.innerHTML += template(element);
         lastData = element.missed_votes_pct;
       } else if (element.missed_votes_pct == lastData) {
-        let newRow2 = document.createElement("tr");
-        topTen.append(newRow2);
-        let newData = document.createElement("td");
-        newData.className = "text-center";
-        createName(element);
-        newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes;
-        newRow2.append(newData);
-        newData = document.createElement("td");
-        newData.className = "text-center";
-        newData.innerHTML = element.missed_votes_pct + "%";
-        newRow2.append(newData);
+        topTen.innerHTML += template(element);
       }
     });
   }

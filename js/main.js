@@ -13,9 +13,9 @@ let filterDem = document.getElementById("filterDem");
 let filterIndp = document.getElementById("filterIndp");
 let filterState = document.getElementById("statesMenu");
 
-let checkRep = true;
-let checkDem = true;
-let checkIndp = true;
+let checkRep = false;
+let checkDem = false;
+let checkIndp = false;
 let stateValue = "All States";
 
 //
@@ -71,41 +71,24 @@ function dynamicTable(array) {
         person.first_name + " " + person.middle_name + " " + person.last_name;
     }
   }
-  let newRow;
-  let newData;
 
   array.forEach((element) => {
-    newRow = document.createElement("tr");
+    let localClass = "";
     if (element.party == "D") {
-      newRow.className = "demRows " + element.state;
+      localClass = "demRows " + element.state;
     } else if (element.party == "R") {
-      newRow.className = "repRows " + element.state;
+      localClass = "repRows " + element.state;
     } else if (element.party == "I") {
-      newRow.className = "indpRows " + element.state;
+      localClass = "indpRows " + element.state;
     }
-
-    box.append(newRow);
-
-    newData = document.createElement("td");
     createName(element);
-    newData.innerHTML = "<a href=" + element.url + ">" + name + "</a>";
-    newRow.append(newData);
-
-    newData = document.createElement("td");
-    newData.innerText = element.party;
-    newRow.append(newData);
-
-    newData = document.createElement("td");
-    newData.innerText = element.state;
-    newRow.append(newData);
-
-    newData = document.createElement("td");
-    newData.innerText = element.seniority;
-    newRow.append(newData);
-
-    newData = document.createElement("td");
-    newData.innerText = element.votes_with_party_pct;
-    newRow.append(newData);
+    box.innerHTML += `<tr class="${localClass}">
+    <td class="text-center"><a href="${element.url}">${name}</a></td>
+    <td class="text-center">${element.party}</td>
+    <td class="text-center">${element.state}</td>
+    <td class="text-center">${element.seniority}</td>
+    <td class="text-center">${element.votes_with_party_pct} %</td>
+    </tr>`;
   });
 }
 
@@ -141,11 +124,11 @@ function filter() {
       if (!checkDem || !checkRep || !checkIndp) {
         let localArray = listMembers.members.filter(
           (member) =>
-            (document.getElementById("filterDem").checked &&
+            (document.getElementById("filterDem").checked == false &&
               member.party == "D") ||
-            (document.getElementById("filterRep").checked &&
+            (document.getElementById("filterRep").checked == false &&
               member.party == "R") ||
-            (document.getElementById("filterIndp").checked &&
+            (document.getElementById("filterIndp").checked == false &&
               member.party == "I")
         );
         document.getElementById("listTbody").innerHTML = "";
@@ -160,11 +143,11 @@ function filter() {
       if (!checkDem || !checkRep || !checkIndp) {
         let localArray = listState.filter(
           (member) =>
-            (document.getElementById("filterDem").checked &&
+            (document.getElementById("filterDem").checked == false &&
               member.party == "D") ||
-            (document.getElementById("filterRep").checked &&
+            (document.getElementById("filterRep").checked == false &&
               member.party == "R") ||
-            (document.getElementById("filterIndp").checked &&
+            (document.getElementById("filterIndp").checked == false &&
               member.party == "I")
         );
         document.getElementById("listTbody").innerHTML = "";
